@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -40,6 +41,14 @@ class MissingManActivity : AppCompatActivity(), OnTouchListener {
 
         binding.mainBtn.setOnClickListener {
             finish()
+        }
+
+        binding.infoBtn.setOnClickListener {
+            Toast.makeText(
+                this,
+                "Choose a card and press 'Hide': the magician removes your card!!",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
         setVisibleState()

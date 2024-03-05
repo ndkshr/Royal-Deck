@@ -3,6 +3,7 @@ package me.ndkshr.royaldeck
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.Handler
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +32,14 @@ class TwentyOneCardTrick : AppCompatActivity(), NumberTrickCardColumnAdapter.OnC
 
         binding.mainBtn.setOnClickListener {
             finish()
+        }
+
+        binding.infoBtn.setOnClickListener {
+            Toast.makeText(
+                this,
+                "Choose a card & click on the column with your card. Repeat x 3!!",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
         initBoard()
