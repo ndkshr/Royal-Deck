@@ -3,6 +3,7 @@ package me.ndkshr.royaldeck
 import android.animation.ObjectAnimator
 import android.graphics.Rect
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -33,7 +34,7 @@ class NumberTrickActivity : AppCompatActivity(), NumberTrickCardColumnAdapter.On
         binding = DataBindingUtil.setContentView(this, R.layout.activity_numbertrick)
 
         initBoard()
-//        decorateBoard()
+        decorateBoard()
     }
 
     private fun initBoard() {
@@ -54,7 +55,15 @@ class NumberTrickActivity : AppCompatActivity(), NumberTrickCardColumnAdapter.On
     }
 
     private fun decorateBoard() {
-        ObjectAnimator.ofFloat(binding.col1Rv, "translationY", -1000f).apply {
+        ObjectAnimator.ofFloat(binding.col1Rv, "translationY", -920f).apply {
+            duration = 500
+            start()
+        }
+        ObjectAnimator.ofFloat(binding.col2Rv, "translationY", -920f).apply {
+            duration = 500
+            start()
+        }
+        ObjectAnimator.ofFloat(binding.col3Rv, "translationY", -920f).apply {
             duration = 500
             start()
         }
@@ -97,13 +106,6 @@ class NumberTrickActivity : AppCompatActivity(), NumberTrickCardColumnAdapter.On
             idx += 3
         }
 
-        if (times == 3) {
-            times = 0
-            ResultDialogFragment(myDeck[10])
-                .show(supportFragmentManager, "ResultDialogFragment")
-            return
-        }
-
         adapter1.cardsInColumn = firstDeck
         adapter2.cardsInColumn = secondDeck
         adapter3.cardsInColumn = thirdDeck
@@ -111,5 +113,19 @@ class NumberTrickActivity : AppCompatActivity(), NumberTrickCardColumnAdapter.On
         adapter1.notifyDataSetChanged()
         adapter2.notifyDataSetChanged()
         adapter3.notifyDataSetChanged()
+
+        if (times == 3) {
+            times = 0
+            ResultDialogFragment(myDeck[10])
+                .show(supportFragmentManager, "ResultDialogFragment")
+            return
+        }
+
+
+        binding.col1Rv.animate().translationX(0f).translationY(1000f).setDuration(300)
+        binding.col2Rv.animate().translationX(0f).translationY(1000f).setDuration(300)
+        binding.col3Rv.animate().translationX(0f).translationY(1000f).setDuration(300)
+
+        Handler(mainLooper).postDelayed({ decorateBoard() }, 400)
     }
 }

@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/card1_image"
             android:layout_width="50dp"
-            android:layout_height="71.4dp"
+            android:layout_height="72dp"
             android:layout_margin="5dp"
             android:src="@mipmap/card_queen_of_spades" />
     </androidx.cardview.widget.CardView>
