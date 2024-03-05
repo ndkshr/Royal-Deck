@@ -7,27 +7,32 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/pool_green"
         tools:context=".MainActivity"
         tools:showPath="true">
+
+        <ImageView
+            android:id="@+id/table_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/poolbg" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:backgroundTint="@color/white"
             android:elevation="30dp"
             app:cardCornerRadius="8dp"
-            android:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/card2"
             app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
                 android:id="@+id/card1_image"
-                android:layout_width="105dp"
-                android:layout_height="150dp"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
                 android:layout_margin="5dp"
                 android:src="@mipmap/queen_of_spades" />
         </androidx.cardview.widget.CardView>
@@ -36,19 +41,18 @@
             android:id="@+id/card2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:elevation="30dp"
             app:cardCornerRadius="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/card3"
             app:layout_constraintHorizontal_chainStyle="spread"
-            android:backgroundTint="@color/white"
-            app:layout_constraintStart_toEndOf="@id/card1"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toEndOf="@id/card1">
 
             <ImageView
                 android:id="@+id/card2_image"
-                android:layout_width="105dp"
-                android:layout_height="150dp"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
                 android:layout_margin="5dp"
                 android:src="@mipmap/queen_of_spades" />
         </androidx.cardview.widget.CardView>
@@ -57,19 +61,19 @@
             android:id="@+id/card3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="@color/white"
             android:elevation="30dp"
             app:cardCornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread"
-            android:backgroundTint="@color/white"
-            app:layout_constraintStart_toEndOf="@id/card2"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toEndOf="@id/card2">
 
             <ImageView
                 android:id="@+id/card3_image"
-                android:layout_width="105dp"
-                android:layout_height="150dp"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
                 android:layout_margin="5dp"
                 android:src="@mipmap/queen_of_spades" />
         </androidx.cardview.widget.CardView>
@@ -78,9 +82,10 @@
             android:id="@+id/hide_my_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="50dp"
+            android:backgroundTint="@color/pool_red"
             android:text="Hide my card"
-            android:textAllCaps="true"
+            android:textColor="@color/pool_gold"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

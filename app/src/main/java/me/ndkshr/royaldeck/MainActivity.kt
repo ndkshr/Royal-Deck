@@ -1,12 +1,15 @@
 package me.ndkshr.royaldeck
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
 import me.ndkshr.royaldeck.databinding.ActivityMainBinding
 import kotlin.random.Random
@@ -36,10 +39,6 @@ class MainActivity : AppCompatActivity(), OnTouchListener {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.card1.setOnTouchListener(this)
-        binding.card2.setOnTouchListener(this)
-        binding.card3.setOnTouchListener(this)
-
         setVisibleState()
         binding.hideMyCard.setOnClickListener {
             if (currentUiState == UiState.VISIBLE) {
@@ -56,9 +55,24 @@ class MainActivity : AppCompatActivity(), OnTouchListener {
         binding.card2Image.setImageResource(deck[idxs[4]])
         binding.card3.visibility = View.GONE
         binding.hideMyCard.text = "Try Again"
+
+        ObjectAnimator.ofFloat(binding.card1, "translationX", 400f).apply {
+            duration = 500
+            start()
+        }
+
+        ObjectAnimator.ofFloat(binding.card2, "translationX", -400f).apply {
+            duration = 500
+            start()
+        }
     }
 
     private fun setVisibleState() {
+
+        binding.card1.animate().translationX(0f).translationY(0f).setDuration(300)
+        binding.card2.animate().translationX(0f).translationY(0f).setDuration(300)
+        binding.card3.animate().translationX(0f).translationY(0f).setDuration(300)
+
         deck = if (Random.nextBoolean()) blackCards else redCards
         idxs = mutableListOf(0, 1, 2, 3, 4, 5).shuffled()
         currentUiState = UiState.VISIBLE
@@ -67,20 +81,26 @@ class MainActivity : AppCompatActivity(), OnTouchListener {
         binding.card1Image.setImageResource(deck[idxs[0]])
         binding.card2Image.setImageResource(deck[idxs[1]])
         binding.card3Image.setImageResource(deck[idxs[2]])
+
+        Handler(mainLooper).postDelayed({
+            ObjectAnimator.ofFloat(binding.card1, "translationY", -1000f).apply {
+                duration = 500
+                start()
+            }
+
+            ObjectAnimator.ofFloat(binding.card2, "translationY", 1000f).apply {
+                duration = 500
+                start()
+            }
+
+            ObjectAnimator.ofFloat(binding.card3, "translationY", -1000f).apply {
+                duration = 500
+                start()
+            }
+        }, 500L)
+
+
         binding.hideMyCard.text = "Hide my card"
-
-//        val path = Path().apply {
-//            arcTo(0f, 0f, 1000f, 1000f, 270f, -180f, true)
-//        }
-//        val animator = ObjectAnimator.ofFloat(binding.card3, View.X, View.Y, path).apply {
-//            duration = 2000
-//            start()
-//        }
-
-//        ObjectAnimator.ofFloat(binding.card3, "translationX", -1000f).apply {
-//            duration = 500
-//            start()
-//        }
     }
 
     private var _xDelta = 0
@@ -91,7 +111,7 @@ class MainActivity : AppCompatActivity(), OnTouchListener {
         val Y = event.rawY.toInt()
         when (event.action and MotionEvent.ACTION_MASK) {
             MotionEvent.ACTION_DOWN -> {
-                val lParams = view.layoutParams as RelativeLayout.LayoutParams
+                val lParams = view.layoutParams as ConstraintLayout.LayoutParams
                 _xDelta = X - lParams.leftMargin
                 _yDelta = Y - lParams.topMargin
             }
@@ -100,7 +120,7 @@ class MainActivity : AppCompatActivity(), OnTouchListener {
             MotionEvent.ACTION_POINTER_DOWN -> {}
             MotionEvent.ACTION_POINTER_UP -> {}
             MotionEvent.ACTION_MOVE -> {
-                val layoutParams = view.layoutParams as RelativeLayout.LayoutParams
+                val layoutParams = view.layoutParams as ConstraintLayout.LayoutParams
                 layoutParams.leftMargin = X - _xDelta
                 layoutParams.topMargin = Y - _yDelta
                 layoutParams.rightMargin = -250
