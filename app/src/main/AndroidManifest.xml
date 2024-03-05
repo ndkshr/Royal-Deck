@@ -13,9 +13,13 @@
         android:theme="@style/Theme.RoyalDeck"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:name=".MissingManActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".NumberTrickActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

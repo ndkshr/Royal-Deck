@@ -14,20 +14,20 @@ import me.ndkshr.royaldeck.databinding.ActivityMainBinding
 import kotlin.random.Random
 
 
-class MainActivity : AppCompatActivity(), OnTouchListener {
+class MissingManActivity : AppCompatActivity(), OnTouchListener {
 
     private lateinit var binding: ActivityMainBinding
 
     private var currentUiState = UiState.VISIBLE
 
     private val blackCards = listOf(
-        R.mipmap.jack_of_clubs, R.mipmap.king_of_clubs, R.mipmap.queen_of_clubs,
-        R.mipmap.jack_of_spades, R.mipmap.king_of_spades, R.mipmap.queen_of_spades
+        R.mipmap.card_jack_of_clubs, R.mipmap.card_king_of_clubs, R.mipmap.card_queen_of_clubs,
+        R.mipmap.card_jack_of_spades, R.mipmap.card_king_of_spades, R.mipmap.card_queen_of_spades
     )
 
     private val redCards = listOf(
-        R.mipmap.jack_of_hearts, R.mipmap.king_of_hearts, R.mipmap.queen_of_hearts,
-        R.mipmap.king_of_diamonds, R.mipmap.jack_of_diamonds, R.mipmap.queen_of_diamonds
+        R.mipmap.card_jack_of_hearts, R.mipmap.card_king_of_hearts, R.mipmap.card_queen_of_hearts,
+        R.mipmap.card_king_of_diamonds, R.mipmap.card_jack_of_diamonds, R.mipmap.card_queen_of_diamonds
     )
 
     var deck = if (Random.nextBoolean()) blackCards else redCards
