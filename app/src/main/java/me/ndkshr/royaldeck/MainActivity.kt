@@ -6,7 +6,6 @@ import android.os.Handler
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
