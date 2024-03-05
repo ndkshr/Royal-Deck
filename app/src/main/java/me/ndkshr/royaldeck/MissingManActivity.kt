@@ -38,6 +38,10 @@ class MissingManActivity : AppCompatActivity(), OnTouchListener {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        binding.mainBtn.setOnClickListener {
+            finish()
+        }
+
         setVisibleState()
         binding.hideMyCard.setOnClickListener {
             if (currentUiState == UiState.VISIBLE) {

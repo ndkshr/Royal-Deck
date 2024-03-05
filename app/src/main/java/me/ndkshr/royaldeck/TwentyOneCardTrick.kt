@@ -1,12 +1,8 @@
 package me.ndkshr.royaldeck
 
 import android.animation.ObjectAnimator
-import android.graphics.Rect
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import me.ndkshr.royaldeck.databinding.ActivityNumbertrickBinding
 
 const val OFFSET_DIFF = 10
-class NumberTrickActivity : AppCompatActivity(), NumberTrickCardColumnAdapter.OnCardClickListener {
+class TwentyOneCardTrick : AppCompatActivity(), NumberTrickCardColumnAdapter.OnCardClickListener {
 
     private lateinit var binding: ActivityNumbertrickBinding
 
@@ -32,6 +28,10 @@ class NumberTrickActivity : AppCompatActivity(), NumberTrickCardColumnAdapter.On
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_numbertrick)
+
+        binding.mainBtn.setOnClickListener {
+            finish()
+        }
 
         initBoard()
         decorateBoard()
