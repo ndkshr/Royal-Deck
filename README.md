@@ -1,5 +1,7 @@
 # Royal Deck
 
+Play Store Link - https://play.google.com/store/apps/details?id=me.ndkshr.royaldeck
+
 ![rd_banner](https://github.com/ndkshr/Royal-Deck/assets/20442648/cd080338-0b61-4622-abf8-32854ccf0894)
 
 Welcome to Royal Deck – your portal to a captivating world of card tricks! Dive into the enchanting realm of magic and illusion with our collection of mesmerizing card tricks designed to captivate and delight users of all ages. Whether you're a novice eager to learn the secrets of the trade or a seasoned magician looking for new tricks to astound your audience, "Royal Deck" has something magical in store for you.
